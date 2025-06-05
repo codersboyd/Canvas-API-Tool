@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 
 public class CanvasAPI {
     private String canvasInstance;    
@@ -16,9 +17,15 @@ public class CanvasAPI {
     public String sendOption(String optionlol) {
         String output = "";
         if (optionlol.equals("1")) {
-            String constructLink = (canvasInstance + "/api/v1/users/?access_token=" + apiKey); // go to this and swap it lol
+            String constructLink = ("https://" + canvasInstance + "/api/v1/users/self?access_token=" + apiKey); // Essentially, if you do this in your browser by replacing it you will get data.
             try {
-                // Enter code here
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(constructLink))
+                .build();
+                HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
+                output = response.body();
+ 
             }
             catch (Exception e) { e.printStackTrace();} // printStackTrace gives us the error
         }

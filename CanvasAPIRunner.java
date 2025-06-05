@@ -17,7 +17,7 @@ public class CanvasAPIRunner {
         load();
         if (isSettingsTxtReal == false) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter your school's Canvas Link: ");
+            System.out.println("Enter your school's Canvas Link without \"HTTPS://\": ");
             String canvasLink = scanner.nextLine();
             System.out.println("Enter your API Token: ");
             String apiToken = scanner.nextLine();
@@ -30,14 +30,15 @@ public class CanvasAPIRunner {
         CanvasAPI test = new CanvasAPI(canvlink, apitken);
         Scanner scannerr = new Scanner(System.in);
         
-        System.out.println("What would you like to do?");
-        System.out.println("Options (and only type the number into the line)");
-        System.out.println("All API Information (1), Exit (2)");
-        String optionn = scannerr.nextLine();
-        String option = optionn.toLowerCase();
-        if (option.equals("2")) System.exit(0); // lets exit if they say exit. else, we just send the option
-        test.sendOption(option);
-        scannerr.close(); // keep this at bottom
+        while (true==true) {
+            System.out.println("What would you like to do?");
+            System.out.println("Options (and only type the number into the line)");
+            System.out.println("All API Information (1), Exit (2)");
+            String optionn = scannerr.nextLine();
+            String option = optionn.toLowerCase();
+            if (option.equals("2")) System.exit(0); // lets exit if they say exit. else, we just send the option
+            System.out.println(test.sendOption(option));
+        }
 
     }
 
