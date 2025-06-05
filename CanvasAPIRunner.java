@@ -23,20 +23,21 @@ public class CanvasAPIRunner {
             String apiToken = scanner.nextLine();
             System.out.println("Saved. To delete, just delete settings.txt.");
             save(canvasLink, apiToken);
-            System.out.println("Saved");
-            scanner.close();
             load();
+            scanner.close();
         }
         // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
-        CanvasAPI test = new CanvasAPI();
-        Scanner scanner = new Scanner(System.in);
+        CanvasAPI test = new CanvasAPI(canvlink, apitken);
+        Scanner scannerr = new Scanner(System.in);
+        
         System.out.println("What would you like to do?");
-        System.out.println("Options (and only type this into the line)");
-        System.out.println("All API Information, Exit");
-        String option = scanner.nextLine().toLowerCase();
-        if (option.equals("exit")) System.exit(0); // lets exit if they say exit. else, we just send the option
+        System.out.println("Options (and only type the number into the line)");
+        System.out.println("All API Information (1), Exit (2)");
+        String optionn = scannerr.nextLine();
+        String option = optionn.toLowerCase();
+        if (option.equals("2")) System.exit(0); // lets exit if they say exit. else, we just send the option
         test.sendOption(option);
-        scanner.close(); // keep this at bottom
+        scannerr.close(); // keep this at bottom
 
     }
 
@@ -56,11 +57,11 @@ public class CanvasAPIRunner {
     private static void load() throws FileNotFoundException {
         if (checkIfFileExists()) { // ts is needed cuz we need something to settings.txt
             isSettingsTxtReal = true;
-            // load logic now
             File file = new File("settings.txt");
             Scanner fileScanner = new Scanner(file); // assumes file exists, or wrap in try-catch
             canvlink = fileScanner.nextLine();
             apitken = fileScanner.nextLine();
+            fileScanner.close();
         }
         else { // Create settings.txt
             File file = new File("settings.txt");
