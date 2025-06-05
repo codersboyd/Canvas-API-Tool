@@ -29,14 +29,14 @@ public class CanvasAPIRunner {
         // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
         CanvasAPI test = new CanvasAPI(canvlink, apitken);
         Scanner scannerr = new Scanner(System.in);
-        
+        int newExitVal = 4; // streamlines adding new options
         while (true==true) {
             System.out.println("What would you like to do?");
             System.out.println("Options (and only type the number into the line)");
-            System.out.println("All API Information (1), Exit (2)");
+            System.out.println("All API Information (1), Clean All API Information (2), List of All Classes (3), Exit ("+newExitVal+"))");
             String optionn = scannerr.nextLine();
             String option = optionn.toLowerCase();
-            if (option.equals("2")) System.exit(0); // lets exit if they say exit. else, we just send the option
+            if (option.equals(Integer.toString(newExitVal))) System.exit(0); // lets exit if they say exit. else, we just send the option
             System.out.println(test.sendOption(option));
         }
 
