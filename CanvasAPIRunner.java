@@ -30,7 +30,7 @@ public class CanvasAPIRunner {
         CanvasAPI test = new CanvasAPI(canvlink, apitken);
         Scanner scannerr = new Scanner(System.in);
         int newExitVal = 4; // streamlines adding new options
-        while (true==true) {
+        while (true) {
             System.out.println("What would you like to do?");
             System.out.println("Options (and only type the number into the line)");
             System.out.println("All API Information (1), Clean All API Information (2), List of All Classes (3), Exit ("+newExitVal+"))");
