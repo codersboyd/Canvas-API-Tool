@@ -16,7 +16,8 @@ public class CanvasAPIRunner {
     public static void main(String[] args) throws FileNotFoundException {
         load();
         if (isSettingsTxtReal == false) {
-            Scanner scanner = new Scanner(System.in);
+            // OLD SYSTEM.OUT CODE, WE ARE JUST GONNA CALL SETUP.JAVA FROM HERE
+            /* Scanner scanner = new Scanner(System.in);
             System.out.println("Enter your school's Canvas Link without \"HTTPS://\": ");
             String canvasLink = scanner.nextLine();
             System.out.println("Enter your API Token: ");
@@ -24,13 +25,17 @@ public class CanvasAPIRunner {
             System.out.println("Saved. To delete, just delete settings.txt.");
             save(canvasLink, apiToken);
             load();
-            scanner.close();
+            scanner.close(); 
+            */
+            Setup test = new Setup();
+            test.callEverything();
         }
         // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
         CanvasAPI test = new CanvasAPI(canvlink, apitken);
         Scanner scannerr = new Scanner(System.in);
         int newExitVal = 5; // streamlines adding new options
-        while (true) {
+        // old logic for system.out.print below
+        /* while (true) {
             System.out.println("What would you like to do?");
             System.out.println("Options (and only type the number into the line)");
             System.out.println("All API Information (1), Clean All API Information (2), List of Current All Classes (3), List of All Time Classes (4), Exit ("+newExitVal+"))");
@@ -38,7 +43,10 @@ public class CanvasAPIRunner {
             String option = optionn.toLowerCase();
             if (option.equals(Integer.toString(newExitVal))) System.exit(0); // lets exit if they say exit. else, we just send the option
             System.out.println(test.sendOption(option));
-        }
+        } */
+
+        App applol = new App();
+        applol.callEverything();
 
     }
 
