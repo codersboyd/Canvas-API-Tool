@@ -4,6 +4,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 
 public class CanvasAPI {
@@ -27,6 +28,9 @@ public class CanvasAPI {
        }
        else if (optionlol.equals("3")) {
            output = listOfClassesEnrolledIn();
+       }
+       else if (optionlol.equals("4")) {
+           output = allTimeListOfClassesEnrolledIn();
        }
        return output;
    }
@@ -91,9 +95,33 @@ public class CanvasAPI {
 
 
    private String listOfClassesEnrolledIn() { // #3
-       String output = fetchAPI("/api/v1/courses?access_token=" + apiKey + "&enrollment_state=active&per_page=100");
-       // Also use JSON to clean up. Maybe for allAPIInformationClean and this one we make a dedicated helper class that will return it in a clean way?
-       return output;
+        String output = "Classes Currently Enrolled in: ";
+        String dataOfJson = fetchAPI("/api/v1/courses?access_token=" + apiKey + "&enrollment_state=active&per_page=100");
+        JSONArray courses = new JSONArray(dataOfJson); // makes a json array of all the instances of courses
+        int numberOfCourses = courses.length(); // gets array length of that
+        for (int i = 0; i < numberOfCourses; i++) {
+            JSONObject course = courses.getJSONObject(i);
+            String courseName = course.getString("name");
+            output += ("\n" + courseName);
+        }
+
+        // Also use JSON to clean up. Maybe for allAPIInformationClean and this one we make a dedicated helper class that will return it in a clean way?
+        return output;
+   }
+
+   private String allTimeListOfClassesEnrolledIn() {
+        String output = "Classes Currently Enrolled in: ";
+        String dataOfJson = fetchAPI("/api/v1/courses?access_token=" + apiKey + "&per_page=100");
+        JSONArray courses = new JSONArray(dataOfJson); // makes a json array of all the instances of courses
+        int numberOfCourses = courses.length(); // gets array length of that
+        for (int i = 0; i < numberOfCourses; i++) {
+            JSONObject course = courses.getJSONObject(i);
+            String courseName = course.optString("name", "(no name)"); // ig some classes dont have a name so fix that
+            if (!courseName.equals("(no name)")) {
+                output += ("\n" + courseName);
+            } 
+        }
+        return output;
    }
   
 }
