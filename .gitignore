@@ -1,1 +1,4 @@
 settings.txt
+*.class
+/target/
+
