@@ -45,10 +45,8 @@ public class CanvasAPIRunner {
             System.out.println(test.sendOption(option));
         } */
 
-        // App applol = new App();
-        // applol.callEverything();
-        Setup waht = new Setup();
-        waht.callEverything();
+        App applol = new App();
+        applol.callEverything();
 
     }
 
@@ -84,6 +82,10 @@ public class CanvasAPIRunner {
             try {file.createNewFile();} 
             catch (IOException e) {}
         }
+    }
+    public static String[] returnLoad() {
+        String[] canvasInfo = {canvlink,apitken};
+        return (canvasInfo);
     }
 
     private static boolean checkIfFileExists () {

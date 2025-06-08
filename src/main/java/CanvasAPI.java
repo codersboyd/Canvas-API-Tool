@@ -18,7 +18,7 @@ public class CanvasAPI {
        canvasInstance = canvasurl;
        apiKey = api;
    }
-   public String sendOption(String optionlol) {
+   public void sendOption(String optionlol) {
        String output = "";
        if (optionlol.equals("1")) {
            output = allAPIInformation();
@@ -32,7 +32,8 @@ public class CanvasAPI {
        else if (optionlol.equals("4")) {
            output = allTimeListOfClassesEnrolledIn();
        }
-       return output;
+       Output haha = new Output(output);
+       haha.doEverything();
    }
 
 
