@@ -70,8 +70,13 @@ public class CanvasAPIRunner {
             isSettingsTxtReal = true;
             File file = new File("settings.txt");
             Scanner fileScanner = new Scanner(file); // assumes file exists, or wrap in try-catch
-            canvlink = fileScanner.nextLine();
-            apitken = fileScanner.nextLine();
+
+            if (fileScanner.hasNextLine())
+                canvlink = fileScanner.nextLine();
+
+            if (fileScanner.hasNextLine())
+                apitken = fileScanner.nextLine();
+
             fileScanner.close();
         }
         else { // Create settings.txt
