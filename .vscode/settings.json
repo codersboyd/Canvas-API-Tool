@@ -1,4 +1,5 @@
 {
-    "editor.detectIndentation": true
+    "editor.detectIndentation": true,
+    "java.configuration.updateBuildConfiguration": "interactive"
 
 }

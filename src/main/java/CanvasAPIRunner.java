@@ -45,12 +45,14 @@ public class CanvasAPIRunner {
             System.out.println(test.sendOption(option));
         } */
 
-        App applol = new App();
-        applol.callEverything();
+        // App applol = new App();
+        // applol.callEverything();
+        Setup waht = new Setup();
+        waht.callEverything();
 
     }
 
-    private static void save(String apiLink, String token) {
+    public static void save(String apiLink, String token) {
         // no need for try catch since we already know settings.txt must have been made if load has already ran which will make one
         // ^ Ignore above statement, these things will error if there is no handler
         try {
