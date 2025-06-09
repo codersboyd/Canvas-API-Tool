@@ -6,10 +6,11 @@ public class Output {
     private String data;
     
     public Output() {
-        
+        doEverything(); //ima put it in here since we alwyas doeverything when we consturct lmk if bad
     }   
     public Output (String dataToPrint) {
         data = dataToPrint;
+        doEverything(); //ima put it in here since we alwyas doeverything when we consturct lmk if bad
     }
     
     public void doEverything () { //essentially doeverything will just call everything and if that makes sense then yeah

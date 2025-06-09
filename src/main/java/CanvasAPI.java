@@ -18,23 +18,26 @@ public class CanvasAPI {
        canvasInstance = canvasurl;
        apiKey = api;
    }
-   public void sendOption(String optionlol) {
-       String output = "";
-       if (optionlol.equals("1")) {
-           output = allAPIInformation();
-       }
-       else if (optionlol.equals("2")) {
-           output = allAPIInformationClean();
-       }
-       else if (optionlol.equals("3")) {
-           output = listOfClassesEnrolledIn();
-       }
-       else if (optionlol.equals("4")) {
-           output = allTimeListOfClassesEnrolledIn();
-       }
-       Output haha = new Output(output);
-       haha.doEverything();
+
+   public void showOutput(String output)
+   {
+        Output haha = new Output(output); //doEverything run in constructor
    }
+
+   public void sendOption(int optionlol) {
+      
+        System.out.println("optionlol = " + optionlol);
+
+       switch (optionlol) {
+            case 1: showOutput(allAPIInformation()); break;
+            case 2: showOutput(allAPIInformationClean()); break;
+            case 3: showOutput(listOfClassesEnrolledIn()); break;
+            case 4: showOutput(allTimeListOfClassesEnrolledIn()); break;
+            case 5: Setup.callEverything(); break;
+            case 6: App.closeIt(); break;
+       }
+
+   }  
 
 
    private String fetchAPI(String constructLinkThing) {

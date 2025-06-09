@@ -13,7 +13,8 @@ public class Setup implements ActionListener {
     private static JTextField districtUrl = new JTextField();
     private static JButton confirm = new JButton("Confirm");
     public Setup() {
-        
+        //callEverything(); //feels right to me, lmk if bad, same thing to output I did
+        //Honestly, I would go for static or nonstatic but rn were a little half and half, I think going nonstatic makes sense since we have all these instanec vars and stuff, like all methods go non static and all that, I think that makes more sense than what we got going on here and in app.java too
     }
     public static void callEverything() {
         frame.setSize(360, 180);
@@ -36,8 +37,8 @@ public class Setup implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         CanvasAPIRunner.save(districtUrl.getText(), apiKey.getText());
-        App applol = new App();
-        applol.callEverything();
+        App app = new App();
+        App.callEverything();
         frame.dispose();
     }
 }
