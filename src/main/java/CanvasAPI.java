@@ -26,15 +26,15 @@ public class CanvasAPI {
 
    public void sendOption(int optionlol) {
       
-        System.out.println("optionlol = " + optionlol);
+        // System.out.println("optionlol = " + optionlol);
 
        switch (optionlol) {
             case 1: showOutput(allAPIInformation()); break;
             case 2: showOutput(allAPIInformationClean()); break;
             case 3: showOutput(listOfClassesEnrolledIn()); break;
             case 4: showOutput(allTimeListOfClassesEnrolledIn()); break;
-            case 5: Setup.callEverything(); break;
-            case 6: App.closeIt(); break;
+            case 5: Setup.callEverything(); App.closeIt(); break;
+            case 6: System.exit(0); break;
        }
 
    }  
@@ -56,7 +56,7 @@ public class CanvasAPI {
    }
 
 
-   private String allAPIInformation () { // #1
+   public String allAPIInformation () { // #1
        return fetchAPI("/api/v1/users/self?access_token=" + apiKey);
    }
    private String allAPIInformationClean() { // #2

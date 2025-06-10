@@ -25,10 +25,9 @@ public class App implements ActionListener {
     public static void closeIt() {
         frame.dispose();
     }
-
     public static void callEverything() {
         App app = new App(); // create one instance
-        frame.setSize(360, 200);
+        frame.setSize(360, 250);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setLocationRelativeTo(null);
