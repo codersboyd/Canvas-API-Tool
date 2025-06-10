@@ -10,26 +10,19 @@ import java.io.FileWriter; //We want toedit file and such adndsuch
 
 
 public class CanvasAPIRunner {
-    private static boolean isSettingsTxtReal = false;
     private static String canvlink;
     private static String apitken;
     public static void main(String[] args) throws FileNotFoundException {
-        load();
-        if (isSettingsTxtReal == false) {
-            // OLD SYSTEM.OUT CODE, WE ARE JUST GONNA CALL SETUP.JAVA FROM HERE
-            /* Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter your school's Canvas Link without \"HTTPS://\": ");
-            String canvasLink = scanner.nextLine();
-            System.out.println("Enter your API Token: ");
-            String apiToken = scanner.nextLine();
-            System.out.println("Saved. To delete, just delete settings.txt.");
-            save(canvasLink, apiToken);
-            load();
-            scanner.close(); 
-            */
+        if (checkIfFileExists() == false || doesFileHaveValidData() == false) {
+            if (checkIfFileExists()) {
+                File file = new File("settings.txt");
+                try {file.createNewFile();} 
+                catch (IOException e) {}
+            }
             Setup test = new Setup();
             test.callEverything();
         }
+        load();
         // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
         CanvasAPI test = new CanvasAPI(canvlink, apitken);
         Scanner scannerr = new Scanner(System.in);
@@ -64,30 +57,34 @@ public class CanvasAPIRunner {
     }
 
     private static void load() throws FileNotFoundException {
-        if (checkIfFileExists()) { // ts is needed cuz we need something to settings.txt
-            isSettingsTxtReal = true;
-            File file = new File("settings.txt");
-            Scanner fileScanner = new Scanner(file); // assumes file exists, or wrap in try-catch
+        File file = new File("settings.txt");
+        Scanner fileScanner = new Scanner(file); // assumes file exists, or wrap in try-catch
 
-            if (fileScanner.hasNextLine())
-                canvlink = fileScanner.nextLine();
+        if (fileScanner.hasNextLine())
+            canvlink = fileScanner.nextLine();
 
-            if (fileScanner.hasNextLine())
-                apitken = fileScanner.nextLine();
+        if (fileScanner.hasNextLine())
+            apitken = fileScanner.nextLine();
 
-            fileScanner.close();
-        }
-        else { // Create settings.txt
-            File file = new File("settings.txt");
-            try {file.createNewFile();} 
-            catch (IOException e) {}
-        }
+        fileScanner.close();
     }
     public static String[] returnLoad() {
         String[] canvasInfo = {canvlink,apitken};
         return (canvasInfo);
     }
-
+    public static boolean doesFileHaveValidData() {
+        boolean canRun = false;
+        try {
+            String[] load = CanvasAPIRunner.returnLoad();
+            CanvasAPI WOAH = new CanvasAPI(load[0], load[1]);
+            String lol = WOAH.allAPIInformation();
+            if (lol.contains("name")) {
+                canRun = true;
+            }
+        }
+        catch (Exception ce) {System.out.println(ce);}
+        return canRun;
+    }
     private static boolean checkIfFileExists () {
         File file = new File("settings.txt");
         return file.exists();

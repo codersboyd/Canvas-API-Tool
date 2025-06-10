@@ -5,5 +5,6 @@ Supports automatic saving and loading, made by students just to experiment a bit
 1. *Must be using java 11+*
 2. *Must have maven installed.*
 
-## How To Build: mvn compile
-## How To Run: mvn exec:java
+## How To Build for terminal: mvn compile
+## How To Run for terminal: mvn exec:java
+## How To Build as Jar: mvn clean package

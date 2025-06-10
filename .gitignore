@@ -1,4 +1,5 @@
 settings.txt
 *.class
-/target/
-
+target/
+target/*
+target/classes
