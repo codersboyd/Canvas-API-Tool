@@ -36,9 +36,26 @@ public class Setup implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        CanvasAPIRunner.save(districtUrl.getText(), apiKey.getText());
-        App app = new App();
-        App.callEverything();
-        frame.dispose();
+        CanvasAPIRunner f = new CanvasAPIRunner();
+        f.save(districtUrl.getText(), apiKey.getText());
+        System.out.println("" + districtUrl.getText() + apiKey.getText());
+        boolean canRun = false;
+        try {
+            String[] load = f.returnLoad();
+            CanvasAPI WOAH = new CanvasAPI(load[0], load[1]);
+            String lol = WOAH.allAPIInformation();
+            if (lol.contains("name")) {
+                canRun = true;
+            }
+        }
+        catch (Exception ce) {System.out.println(ce);}
+        if (canRun) {
+            App app = new App();
+            App.callEverything();
+            frame.dispose();
+        }
+        else {
+            Output tellError = new Output("Either this canvas instance is down, or the information is incorrect. Please doublecheck what you put in.");
+        }
     }
 }

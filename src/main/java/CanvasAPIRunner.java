@@ -22,24 +22,15 @@ public class CanvasAPIRunner {
             Setup test = new Setup();
             test.callEverything();
         }
-        load();
-        // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
-        CanvasAPI test = new CanvasAPI(canvlink, apitken);
-        Scanner scannerr = new Scanner(System.in);
-        int newExitVal = 5; // streamlines adding new options
-        // old logic for system.out.print below
-        /* while (true) {
-            System.out.println("What would you like to do?");
-            System.out.println("Options (and only type the number into the line)");
-            System.out.println("All API Information (1), Clean All API Information (2), List of Current All Classes (3), List of All Time Classes (4), Exit ("+newExitVal+"))");
-            String optionn = scannerr.nextLine();
-            String option = optionn.toLowerCase();
-            if (option.equals(Integer.toString(newExitVal))) System.exit(0); // lets exit if they say exit. else, we just send the option
-            System.out.println(test.sendOption(option));
-        } */
-
-        App applol = new App();
-        applol.callEverything();
+        else { 
+            load();
+            // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
+            CanvasAPI test = new CanvasAPI(canvlink, apitken);
+            Scanner scannerr = new Scanner(System.in);
+            int newExitVal = 5; // streamlines adding new options
+            App applol = new App();
+            applol.callEverything();
+        }
 
     }
 
@@ -69,6 +60,8 @@ public class CanvasAPIRunner {
         fileScanner.close();
     }
     public static String[] returnLoad() {
+        try {load(); } // this needs error handling
+        catch (Exception e) {System.out.println("bruh");}
         String[] canvasInfo = {canvlink,apitken};
         return (canvasInfo);
     }
