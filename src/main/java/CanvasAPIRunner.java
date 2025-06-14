@@ -1,9 +1,7 @@
 import java.util.Scanner;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.BufferedWriter;
 import java.io.FileWriter; //We want toedit file and such adndsuch
 
 //I HATE NON OPEN SOURCE!
@@ -26,8 +24,6 @@ public class CanvasAPIRunner {
             load();
             // System.out.println("Data Test: " + "\n" + canvlink + "\n" + apitken);
             CanvasAPI test = new CanvasAPI(canvlink, apitken);
-            Scanner scannerr = new Scanner(System.in);
-            int newExitVal = 5; // streamlines adding new options
             App applol = new App();
             applol.callEverything();
         }

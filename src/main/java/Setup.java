@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,7 +48,6 @@ public class Setup implements ActionListener {
         }
         catch (Exception ce) {System.out.println(ce);}
         if (canRun) {
-            App app = new App();
             App.callEverything();
             frame.dispose();
         }

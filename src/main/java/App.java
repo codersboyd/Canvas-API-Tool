@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;  
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,10 +30,6 @@ public class App implements ActionListener {
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setLocationRelativeTo(null);
 
-        // allAPIInformation.addActionListener(app);
-        // cleanallAPIInformation.addActionListener(app);
-        // listOfEnrolled.addActionListener(app);
-        // listOfAllTimeEnrolled.addActionListener(app);
 
         frame.add(welcomeThing);
 
@@ -61,25 +55,5 @@ public class App implements ActionListener {
         CanvasAPI WOAH = new CanvasAPI(load[0], load[1]);
 
         WOAH.sendOption(butts.indexOf(e.getSource())+1); 
-
-
-        // if (e.getSource() == allAPIInformation) {
-        //     WOAH.sendOption(1); 
-        // }
-        // else if (e.getSource() == cleanallAPIInformation) {
-        //     WOAH.sendOption(2);
-        // }
-        // else if (e.getSource() == listOfEnrolled) {
-        //     WOAH.sendOption(3);
-        // }
-        // else if (e.getSource() == listOfAllTimeEnrolled) {
-        //     WOAH.sendOption(4);
-        // }
-        // else if (e.getSource() == changeSettings) {
-        //     WOAH.sendOption(5);
-        // }
-        // else if (e.getSource() == changeSettings) {
-        //     WOAH.sendOption(6)
-        // }
     }
 }

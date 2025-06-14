@@ -26,7 +26,6 @@ public class CanvasAPI {
 
    public void sendOption(int optionlol) {
       
-        // System.out.println("optionlol = " + optionlol);
 
        switch (optionlol) {
             case 1: showOutput(allAPIInformation()); break;
